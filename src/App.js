@@ -8,6 +8,7 @@ import {
   Login,
   ShoppingCard,
   Warranty,
+  Favorite,
 } from "./pages/index";
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/shoppingCard" element={<ShoppingCard />} />
             <Route path="/warranty" element={<Warranty />} />
+            <Route path="/favorite" element={<Favorite />} />
           </Route>
         </Routes>
       </BrowserRouter>
