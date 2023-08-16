@@ -14,7 +14,7 @@ const CurosalContainer = () => {
     <>
       <div className="curosal-container">
         <AutoplaySlider
-          play={false}
+          play={true}
           cancelOnInteraction={false}
           interval={5000}
           style={{
@@ -24,7 +24,7 @@ const CurosalContainer = () => {
         >
           {heroData.map((val) => {
             return (
-              <div>
+              <div key={val.id}>
                 <Curosal
                   key={val.id}
                   photo={val.photo}
