@@ -4,5 +4,4 @@ export { default as About } from "./about";
 export { default as Login } from "./login";
 export { default as ShoppingCard } from "./soppingCard";
 export { default as Warranty } from "./warranty";
-
-export { default as Favorite } from "./favorite";
+export { default as Search } from "./search";

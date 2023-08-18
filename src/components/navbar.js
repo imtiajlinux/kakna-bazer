@@ -1,14 +1,15 @@
 import "./navbarStyle.css";
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useEffect, useContext } from "react";
 import { FaBarsStaggered, FaCircleUser } from "react-icons/fa6";
 import { FaShoppingCart, FaTimes } from "react-icons/fa";
 import { MdFavorite } from "react-icons/md";
-
 import { Link } from "react-router-dom";
 import navLogo from "../assets/brand logo.png";
+import { cartContext } from "./context/cartContext";
+import SearchBar from "./search/searchBar";
 
 const NavBar = () => {
+  const { cart } = useContext(cartContext);
   const [click, setclick] = useState(false);
   const handelclick = () => setclick(!click);
   const [bgColor, setbgcolor] = useState(false);
@@ -67,11 +68,9 @@ const NavBar = () => {
           <Link to="/shoppingCard">
             {" "}
             <FaShoppingCart></FaShoppingCart>
+            <span className="shopping-cart-indicator">{cart.length}</span>
           </Link>
-          <Link to="/favorite">
-            {" "}
-            <MdFavorite></MdFavorite>
-          </Link>
+
           <Link to="/login">
             <FaCircleUser></FaCircleUser>
           </Link>

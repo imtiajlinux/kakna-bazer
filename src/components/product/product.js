@@ -1,10 +1,19 @@
 import "./productStyle.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ProductCard from "./productCard";
 import CurosalIn from "./curosal in product/product-curosal-container";
+import { cartContext } from "../context/cartContext";
 
 const Product = () => {
   const [product, setproduct] = useState([]);
+  const { cart, setcart } = useContext(cartContext);
+  // const [cart, setcart] = useState([]);
+
+  const handelAddProduct = (product) => {
+    const newcard = [...cart, product];
+    setcart(newcard);
+  };
+
   const fetchProduct = async () => {
     const response = await fetch("https://dummyjson.com/products");
     const data = await response.json();
@@ -17,11 +26,23 @@ const Product = () => {
   return (
     <div className="product-container">
       {product.slice(0, 15).map((val) => {
-        return <ProductCard key={val.id} product={val}></ProductCard>;
+        return (
+          <ProductCard
+            key={val.id}
+            handelAddProduct={handelAddProduct}
+            product={val}
+          ></ProductCard>
+        );
       })}
       <CurosalIn></CurosalIn>
       {product.slice(15).map((val) => {
-        return <ProductCard key={val.id} product={val}></ProductCard>;
+        return (
+          <ProductCard
+            key={val.id}
+            handelAddProduct={handelAddProduct}
+            product={val}
+          ></ProductCard>
+        );
       })}
     </div>
   );

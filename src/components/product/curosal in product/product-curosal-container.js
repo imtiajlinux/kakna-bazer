@@ -25,7 +25,7 @@ const CurosalIn = () => {
             return (
               <div key={val.id}>
                 <ProductCurosal
-                  key={val.id}
+                  // key={val.id}
                   imgs={val.photo}
                   into={val.into}
                   title={val.title}

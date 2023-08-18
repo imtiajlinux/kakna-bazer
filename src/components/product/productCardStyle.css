@@ -1,5 +1,6 @@
 .product-card {
   max-width: 300px;
+
   padding: 1rem;
   margin: 1rem;
 
@@ -9,15 +10,25 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.product-card .product-card-img {
+  height: 200px;
+}
 .product-card .product-card-img img {
   width: 100%;
+  max-height: 200px;
 }
 .product-card .product-dit {
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-transform: capitalize;
+  padding-bottom: 0.5rem;
 }
 .product-card-info .product-dit .stock {
   color: red;
+}
+.product-card-info h3,
+.product-card-info h2,
+.product-card-info p {
+  margin: 5px;
 }
