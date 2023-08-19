@@ -2,10 +2,10 @@ import "./heroStyle.css";
 import React from "react";
 import CurosalContainer from "./curosalContainer";
 
-const Hero = () => {
+const Hero = ({ handelAddProduct }) => {
   return (
     <div className="hero">
-      <CurosalContainer></CurosalContainer>
+      <CurosalContainer handelAddProduct={handelAddProduct}></CurosalContainer>
     </div>
   );
 };

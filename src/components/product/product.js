@@ -4,15 +4,10 @@ import ProductCard from "./productCard";
 import CurosalIn from "./curosal in product/product-curosal-container";
 import { cartContext } from "../context/cartContext";
 
-const Product = () => {
+const Product = ({ handelAddProduct }) => {
   const [product, setproduct] = useState([]);
-  const { cart, setcart } = useContext(cartContext);
+  // const { cart, setcart } = useContext(cartContext);
   // const [cart, setcart] = useState([]);
-
-  const handelAddProduct = (product) => {
-    const newcard = [...cart, product];
-    setcart(newcard);
-  };
 
   const fetchProduct = async () => {
     const response = await fetch("https://dummyjson.com/products");

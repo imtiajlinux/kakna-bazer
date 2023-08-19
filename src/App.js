@@ -12,15 +12,48 @@ import {
   ContactUs,
   About,
   Login,
-  ShoppingCard,
+  ShoppingCart,
   Warranty,
   Search,
 } from "./pages/index";
+
 function App() {
   const [cart, setcart] = useState([]);
 
   const [product, setproduct] = useState([]);
 
+  // const handelAddProduct = (product) => {
+  //   const newcard = [...cart, product];
+  //   setcart(newcard);
+  // };
+  const handelAddProduct = (product) => {
+    const productExist = cart.find((item) => item.id === product.id);
+    if (productExist) {
+      setcart(
+        cart.map((item) =>
+          item.id === product.id
+            ? { ...productExist, quantity: productExist.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+      setcart([...cart, { ...product, quantity: 1 }]);
+    }
+  };
+  const handelRemoveProduct = (product) => {
+    const productExist = cart.find((item) => item.id === product.id);
+    if (productExist.quantity === 1) {
+      setcart(cart.filter((item) => item.id !== product.id));
+    } else {
+      setcart(
+        cart.map((item) =>
+          item.id === product.id
+            ? { ...productExist, quantity: productExist.quantity - 1 }
+            : item
+        )
+      );
+    }
+  };
   return (
     <>
       <BrowserRouter>
@@ -35,13 +68,27 @@ function App() {
               </searchProductContext.Provider>
             }
           >
-            <Route index element={<Home />} />
+            <Route
+              index
+              element={<Home handelAddProduct={handelAddProduct} />}
+            />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/shoppingCard" element={<ShoppingCard />} />
+            <Route
+              path="/shoppingCart"
+              element={
+                <ShoppingCart
+                  handelAddProduct={handelAddProduct}
+                  handelRemoveProduct={handelRemoveProduct}
+                />
+              }
+            />
             <Route path="/warranty" element={<Warranty />} />
-            <Route path="/search" element={<Search />} />
+            <Route
+              path="/search"
+              element={<Search handelAddProduct={handelAddProduct} />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

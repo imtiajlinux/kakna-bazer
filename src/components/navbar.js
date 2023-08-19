@@ -2,11 +2,10 @@ import "./navbarStyle.css";
 import React, { useState, useEffect, useContext } from "react";
 import { FaBarsStaggered, FaCircleUser } from "react-icons/fa6";
 import { FaShoppingCart, FaTimes } from "react-icons/fa";
-import { MdFavorite } from "react-icons/md";
+
 import { Link } from "react-router-dom";
 import navLogo from "../assets/brand logo.png";
 import { cartContext } from "./context/cartContext";
-import SearchBar from "./search/searchBar";
 
 const NavBar = () => {
   const { cart } = useContext(cartContext);
@@ -65,7 +64,7 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="nav-icons">
-          <Link to="/shoppingCard">
+          <Link to="/shoppingCart">
             {" "}
             <FaShoppingCart></FaShoppingCart>
             <span className="shopping-cart-indicator">{cart.length}</span>

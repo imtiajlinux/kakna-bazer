@@ -1,9 +1,10 @@
 import "./productCardStyle.css";
-import React from "react";
+import React, { useContext, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 
 const ProductCard = ({ product, handelAddProduct }) => {
   const { title, images, description, price, brand, category, stock } = product;
+
   return (
     <div className="product-card">
       <div className="product-card-img">
@@ -17,6 +18,7 @@ const ProductCard = ({ product, handelAddProduct }) => {
         <div className="product-dit">
           <div>
             <h3> price: {price}$</h3>
+
             <button
               type="submit"
               onClick={() => {
@@ -25,7 +27,7 @@ const ProductCard = ({ product, handelAddProduct }) => {
               className="buy-now-btn"
             >
               {" "}
-              <FaShoppingCart></FaShoppingCart> Add Card
+              <FaShoppingCart></FaShoppingCart> Add Cart
             </button>
           </div>
           <div>

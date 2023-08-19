@@ -1,18 +1,19 @@
 import React, { useContext } from "react";
 import ProductCard from "../components/product/productCard";
+
 import {
   searchProductContext,
   cartContext,
 } from "../components/context/cartContext";
 
-const Search = () => {
+const Search = ({ handelAddProduct }) => {
   const { product } = useContext(searchProductContext);
   const { cart, setcart } = useContext(cartContext);
 
-  const handelAddProduct = (product) => {
-    const newcard = [...cart, product];
-    setcart(newcard);
-  };
+  // const handelAddProduct = (product) => {
+  //   const newcard = [...cart, product];
+  //   setcart(newcard);
+  // };
 
   return (
     <div style={{ marginTop: "140px" }}>

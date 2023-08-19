@@ -1,5 +1,6 @@
 import "./SearchBarStyle.css";
-import React, { useContext, useEffect, useState } from "react";
+
+import React, { useContext, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { searchProductContext } from "../context/cartContext";

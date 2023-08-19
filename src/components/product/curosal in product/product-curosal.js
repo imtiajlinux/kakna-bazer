@@ -10,7 +10,7 @@ const ProductCurosal = ({ imgs, into, title, price }) => {
         <h2>{title}</h2>
         <h3>price:{price}$</h3>
         <button type="submit" className="buy-now-btn">
-          buy now
+          Interesdted
         </button>
       </div>
     </div>

@@ -9,7 +9,7 @@ import "react-awesome-slider/dist/styles.css";
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
-const CurosalContainer = () => {
+const CurosalContainer = ({ handelAddProduct }) => {
   return (
     <>
       <div className="curosal-container">
@@ -26,11 +26,8 @@ const CurosalContainer = () => {
             return (
               <div key={val.id}>
                 <Curosal
-                  key={val.id}
-                  photo={val.photo}
-                  titel={val.titel}
-                  text={val.text}
-                  price={val.price}
+                  handelAddProduct={handelAddProduct}
+                  product={val}
                 ></Curosal>
               </div>
             );
