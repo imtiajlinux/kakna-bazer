@@ -25,7 +25,7 @@ function App() {
   // const handelAddProduct = (product) => {
   //   const newcard = [...cart, product];
   //   setcart(newcard);
-  // };
+  // };   
   const handelAddProduct = (product) => {
     const productExist = cart.find((item) => item.id === product.id);
     if (productExist) {
