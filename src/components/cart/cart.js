@@ -48,9 +48,9 @@ const Cart = ({ handelAddProduct, handelRemoveProduct }) => {
             </div>
           </div>
           {cart.map((val) => {
-            const itemprice = val.quantity * val.price;
+            const itemprice =    val.quantity * val.price;
             return (
-              <div>
+              <div key={val.id}>
                 <div className="cart-item-list">
                   <div className="cart-item-img">
                     <img src={val.images[0]} alt="product img" />
