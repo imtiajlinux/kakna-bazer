@@ -1,0 +1,13 @@
+.warranty-container {
+  padding: 140px 2rem;
+  max-width: 1100px;
+  margin: auto;
+  text-align: justify;
+}
+.warranty-container .warranty-content h1 {
+  text-align: center;
+  border-bottom: 5px double red;
+  padding: 1rem 0;
+  text-transform: uppercase;
+  font-family: cursive;
+}
