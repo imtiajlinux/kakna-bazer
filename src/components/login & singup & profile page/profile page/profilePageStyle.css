@@ -1,0 +1,39 @@
+.profilepage-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 1rem;
+  margin-bottom: 30px;
+  text-align: center;
+  border: 2px #ff964a solid;
+  border-radius: 10px;
+}
+.profilepage-profilephoto {
+  max-width: 500px;
+  width: 80vw;
+}
+.profilepage-container .profilepage-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.profilepage-container .profilepage-content .info {
+  max-width: 300px;
+}
+.profilepage-container .profilepage-content h3 {
+  text-wrap: wrap;
+}
+.profilepage-btns {
+  text-align: center;
+  margin: auto;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
+.profilepage-btns button {
+  background-color: #ff964a;
+  border: none;
+  padding: 0.8rem;
+  font-size: 20px;
+  border-radius: 10px;
+}

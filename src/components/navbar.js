@@ -2,12 +2,14 @@ import "./navbarStyle.css";
 import React, { useState, useEffect, useContext } from "react";
 import { FaBarsStaggered, FaCircleUser } from "react-icons/fa6";
 import { FaShoppingCart, FaTimes } from "react-icons/fa";
+import CurrentUserContext from "./context/currentuserContext";
 
 import { Link } from "react-router-dom";
 import navLogo from "../assets/brand logo.png";
 import { cartContext } from "./context/cartContext";
 
 const NavBar = () => {
+  const { currentUser } = useContext(CurrentUserContext);
   const { cart } = useContext(cartContext);
   const [click, setclick] = useState(false);
   const handelclick = () => setclick(!click);
@@ -70,8 +72,20 @@ const NavBar = () => {
             <span className="shopping-cart-indicator">{cart.length}</span>
           </Link>
 
-          <Link to="/login">
-            <FaCircleUser></FaCircleUser>
+          <Link to="/profile">
+            {currentUser ? (
+              <img
+                className="nav-profilepic"
+                src={
+                  currentUser.photoURL
+                    ? currentUser.photoURL
+                    : "https://static.vecteezy.com/system/resources/previews/000/439/863/large_2x/vector-users-icon.jpg"
+                }
+                alt=""
+              />
+            ) : (
+              <FaCircleUser></FaCircleUser>
+            )}
           </Link>
           <Link to="#" onClick={handelclick}>
             {click ? (

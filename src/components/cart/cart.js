@@ -1,7 +1,7 @@
 import "./cartStyle.css";
 import React, { useContext } from "react";
 import { cartContext } from "../context/cartContext";
-import { GrAdd } from "react-icons/gr";
+
 import { FaRegSquareMinus, FaRegSquarePlus } from "react-icons/fa6";
 
 const Cart = ({ handelAddProduct, handelRemoveProduct }) => {
@@ -10,7 +10,7 @@ const Cart = ({ handelAddProduct, handelRemoveProduct }) => {
     (price, item) => price + item.quantity * item.price,
     0
   );
-
+  console.log(cart);
   return (
     <div style={{ margin: "150px 0", padding: ".5rem" }}>
       <div className="cart-items">
@@ -48,7 +48,7 @@ const Cart = ({ handelAddProduct, handelRemoveProduct }) => {
             </div>
           </div>
           {cart.map((val) => {
-            const itemprice =    val.quantity * val.price;
+            const itemprice = val.quantity * val.price;
             return (
               <div key={val.id}>
                 <div className="cart-item-list">

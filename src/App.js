@@ -11,11 +11,13 @@ import {
   Home,
   ContactUs,
   About,
-  Login,
+  Profile,
   ShoppingCart,
   Warranty,
   Search,
 } from "./pages/index";
+import LoginPage from "./components/login & singup & profile page/login page/loginPage";
+import UpdateProfile from "./components/login & singup & profile page/profile page/upgrade profile/updateProfile";
 
 function App() {
   const [cart, setcart] = useState([]);
@@ -25,7 +27,7 @@ function App() {
   // const handelAddProduct = (product) => {
   //   const newcard = [...cart, product];
   //   setcart(newcard);
-  // };   
+  // };
   const handelAddProduct = (product) => {
     const productExist = cart.find((item) => item.id === product.id);
     if (productExist) {
@@ -74,7 +76,9 @@ function App() {
             />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/updateProfie" element={<UpdateProfile />} />
             <Route
               path="/shoppingCart"
               element={
