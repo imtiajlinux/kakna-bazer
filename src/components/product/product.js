@@ -1,13 +1,10 @@
 import "./productStyle.css";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "./productCard";
 import CurosalIn from "./curosal in product/product-curosal-container";
-import { cartContext } from "../context/cartContext";
 
 const Product = ({ handelAddProduct }) => {
   const [product, setproduct] = useState([]);
-  // const { cart, setcart } = useContext(cartContext);
-  // const [cart, setcart] = useState([]);
 
   const fetchProduct = async () => {
     const response = await fetch("https://dummyjson.com/products");

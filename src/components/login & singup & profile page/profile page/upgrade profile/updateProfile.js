@@ -56,7 +56,7 @@ const UpdateProfile = () => {
     e.preventDefault();
     updateinfo(currentUser, username, profileinfo, setloding);
   };
-
+  console.log(profileinfo.city);
   return (
     <div className="updateProfile-container">
       <form action="#">

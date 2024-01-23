@@ -3,7 +3,6 @@ import { auth } from "../../firebaseConfig";
 import { getFirestore, getDoc, doc } from "firebase/firestore";
 
 const CurrentUserinfocontext = createContext();
-const firestorage = getFirestore();
 
 const Userinfoprovider = ({ children }) => {
   const [userinfo, setuserinfo] = useState();
@@ -12,7 +11,7 @@ const Userinfoprovider = ({ children }) => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         try {
-          const docref = doc(firestorage, "profileinfo", user.uid);
+          const docref = doc(getFirestore, "profileinfo", user.uid);
           const docsnap = await getDoc(docref);
           if (docsnap.exists()) {
             const data = docsnap.data();

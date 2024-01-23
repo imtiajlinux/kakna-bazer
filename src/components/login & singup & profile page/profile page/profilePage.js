@@ -5,15 +5,18 @@ import { Link } from "react-router-dom";
 import CurrentUserContext from "../../context/currentuserContext";
 import CurrentUserinfocontext from "../../context/getUserInfocontext";
 import { auth } from "../../../firebaseConfig";
+import { cartContext } from "../../context/cartContext";
 
 const ProfilePage = () => {
-  const { userinfo } = useContext(CurrentUserinfocontext);
+  const { setcart } = useContext(cartContext);
+  const { userinfo, userCart } = useContext(CurrentUserinfocontext);
   const { village, street, city, country, dateofbirth, phone } =
     userinfo?.profileinfo || {};
   const { currentUser } = useContext(CurrentUserContext);
   const logout = async () => {
     try {
       await signOut(auth);
+      setcart([]);
     } catch (error) {
       console.log(error);
     }
@@ -39,6 +42,7 @@ const ProfilePage = () => {
           <hr />
           <h3>phone no : {phone}</h3>
           <h3> date of birth : {dateofbirth}</h3>
+          <h3> email : {currentUser.email}</h3>
         </div>
         <div className="info">
           <p>address</p>

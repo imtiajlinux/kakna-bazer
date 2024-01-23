@@ -1,16 +1,54 @@
 import "./cartStyle.css";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { cartContext } from "../context/cartContext";
+import CurrentUserContext from "../context/currentuserContext";
+import { getDoc, getFirestore, doc } from "firebase/firestore";
 
 import { FaRegSquareMinus, FaRegSquarePlus } from "react-icons/fa6";
 
+const firestorage = getFirestore();
 const Cart = ({ handelAddProduct, handelRemoveProduct }) => {
-  const { cart } = useContext(cartContext);
+  const [test1, settest1] = useState();
+  const { cart, setcart } = useContext(cartContext);
+  const [onlinecart, setonlinecart] = useState([]);
+
+  const { currentUser } = useContext(CurrentUserContext);
   const totalprice = cart.reduce(
     (price, item) => price + item.quantity * item.price,
     0
   );
-  console.log(cart);
+
+  useEffect(() => {
+    const getcartdata = async () => {
+      if (currentUser) {
+        settest1(cart);
+        try {
+          const cartraf = doc(firestorage, "userCartitem", currentUser.uid);
+          const snapcart = await getDoc(cartraf);
+          if (snapcart.exists()) {
+            const data = snapcart.data();
+            setonlinecart(data);
+            // console.dir(data);
+            // const temp = Object.values(data); // Convert the object into an array and set it to the state variable
+            // setonlinecart(temp[0]);
+            // console.dir(onlinecart);
+            // setonlinecart(...cart.push(...data));
+
+            console.log(`this is data`, data);
+            console.log(`this test1`, test1);
+            console.log(`this is cart`, cart);
+          }
+        } catch (error) {
+          console.log("this error from geting cart data from server ", error);
+        }
+      }
+    };
+    return () => {
+      getcartdata();
+    };
+  }, [cart]);
+  // console.log("online cart", onlinecart, "offline cart", cart);
+
   return (
     <div style={{ margin: "150px 0", padding: ".5rem" }}>
       <div className="cart-items">
@@ -18,7 +56,7 @@ const Cart = ({ handelAddProduct, handelRemoveProduct }) => {
           {" "}
           <h1>this is you card item</h1>
         </div>
-        {cart.lenght == 0 && (
+        {cart.lenght === 0 && (
           <div className="cart-items-empty">
             <h1>no item are addend</h1>
           </div>
@@ -84,11 +122,9 @@ const Cart = ({ handelAddProduct, handelRemoveProduct }) => {
           <div className="cart-items-total-price">
             {" "}
             <div>
-              <h2>total price</h2>
+              <h2>Total price</h2>
             </div>{" "}
-            <div>
-              <h2>:{totalprice}$</h2>
-            </div>
+            <div>{<h2>:{totalprice}$</h2>}</div>
           </div>
         </div>
       </div>

@@ -1,7 +1,11 @@
 import "./App.css";
-import React, { useState } from "react";
+
+import React, { useState, useContext, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout";
+import { uploadCart } from "./components/login & singup & profile page/profile page/upgrade&&upload";
+import CurrentUserContext from "./components/context/currentuserContext";
+
 import {
   cartContext,
   searchProductContext,
@@ -20,14 +24,11 @@ import LoginPage from "./components/login & singup & profile page/login page/log
 import UpdateProfile from "./components/login & singup & profile page/profile page/upgrade profile/updateProfile";
 
 function App() {
+  const { currentUser } = useContext(CurrentUserContext);
   const [cart, setcart] = useState([]);
 
   const [product, setproduct] = useState([]);
 
-  // const handelAddProduct = (product) => {
-  //   const newcard = [...cart, product];
-  //   setcart(newcard);
-  // };
   const handelAddProduct = (product) => {
     const productExist = cart.find((item) => item.id === product.id);
     if (productExist) {
@@ -56,6 +57,13 @@ function App() {
       );
     }
   };
+
+  useEffect(() => {
+    if (currentUser) {
+      uploadCart(currentUser, cart);
+    }
+  }, [cart]);
+
   return (
     <>
       <BrowserRouter>

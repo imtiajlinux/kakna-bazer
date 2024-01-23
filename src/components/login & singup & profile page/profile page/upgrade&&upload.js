@@ -1,6 +1,6 @@
 import { updateProfile } from "firebase/auth";
 import { getStorage, uploadBytes, getDownloadURL, ref } from "firebase/storage";
-import { setDoc, doc, Firestore, getFirestore } from "firebase/firestore";
+import { setDoc, doc, getFirestore } from "firebase/firestore";
 
 const firestore = getFirestore();
 const storage = getStorage();
@@ -29,13 +29,22 @@ export const updateinfo = async (
   updateProfile(currentUser, { displayName: username });
 
   try {
-    const docref = await setDoc(
-      doc(firestore, "profileinfo", currentUser.uid),
-      { profileinfo: profileinfo }
-    );
+    await setDoc(doc(firestore, "profileinfo", currentUser.uid), {
+      profileinfo: profileinfo,
+    });
   } catch (error) {
     console.log("this the error throw by updateinfo", error);
   }
   setloding(false);
   alert("update info done");
+};
+
+export const uploadCart = async (currentUser, cart) => {
+  try {
+    const cartref = doc(firestore, "userCartitem", currentUser.uid);
+    await setDoc(cartref, { cart: cart });
+  } catch (error) {
+    console.log("cart upload error ", error);
+  }
+  alert("cart upload in done");
 };

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import handelChange from "../singup page/handelchange";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebaseConfig";
+import { cartContext } from "../../context/cartContext";
 
 const Login = () => {
   const [loding, setloding] = useState();
