@@ -1,0 +1,24 @@
+.singuppage-container {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+  padding: 0.4rem;
+}
+.singuppage-container form {
+  border: 1px solid black;
+  border-radius: 9px;
+  padding: 1rem;
+}
+.singuppage-container form input {
+  padding: 0.5rem;
+  margin: 0.4rem;
+  width: 90%;
+}
+.singuppage-container form .error {
+  background-color: green;
+
+  width: 100%;
+  padding: 0.4rem 0;
+  border-radius: 5px;
+  color: aliceblue;
+}

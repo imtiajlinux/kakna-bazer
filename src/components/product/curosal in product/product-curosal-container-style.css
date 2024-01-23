@@ -1,0 +1,13 @@
+.product-banner-container {
+  width: 100%;
+  max-width: 1300px;
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+@media screen and (max-width: 1090px) {
+  .product-banner-container {
+    grid-template-columns: 1fr;
+  }
+}

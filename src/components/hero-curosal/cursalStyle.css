@@ -1,0 +1,29 @@
+.curosal {
+  width: 40%;
+  height: 70vh;
+}
+.card {
+  width: 100vw;
+  height: 70vh;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.card .card-content {
+  width: 250px;
+  text-transform: capitalize;
+}
+.card .card-photo img {
+  width: 30vw;
+  border-radius: 10px;
+  filter: drop-shadow(10px 10px 5px black);
+}
+@media screen and (max-width: 650px) {
+  .card {
+    flex-direction: column-reverse;
+  }
+  .card .card-photo img {
+    width: 80vw;
+  }
+}
