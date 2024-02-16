@@ -46,5 +46,5 @@ export const uploadCart = async (currentUser, cart) => {
   } catch (error) {
     console.log("cart upload error ", error);
   }
-  alert("cart upload in done");
+  // alert("cart upload in done");
 };
